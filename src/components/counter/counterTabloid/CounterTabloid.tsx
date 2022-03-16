@@ -1,10 +1,14 @@
-import React from "react";
+import React, {FC} from "react";
 import styles from "./CounterTabloid.module.css"
 
-export const CounterTabloid = () => {
+type CounterTabloidPropsType ={
+    count:number
+}
+
+export const CounterTabloid:FC<CounterTabloidPropsType> = ({count}) => {
     return (
         <div className={styles.counterTabloid}>
-            oOo
+            {count}
         </div>
     )
 }

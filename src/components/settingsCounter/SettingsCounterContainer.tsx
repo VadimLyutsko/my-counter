@@ -1,9 +1,14 @@
-import React from "react";
+import React, {FC} from "react";
 import {SettingsTabloid} from "./settingsTabloid/SettingsTabloid";
 import {SettingsMenu} from "./settingsMenu/SettingsMenu";
 import styles from "./SettingsContainer.module.css"
 
-export const SettingsCounterContainer = () => {
+// type SettingsCounterContainerPropsType={
+//     count:number
+//     setCount:(value:number)=>void
+// }
+
+export const SettingsCounterContainer:FC = () => {
     return (
         <div className={styles.settingsContainer}>
             <SettingsTabloid/>
