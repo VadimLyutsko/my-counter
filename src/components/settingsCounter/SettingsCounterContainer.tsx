@@ -7,9 +7,10 @@ type SettingsCounterContainerPropsType = {
     setMaxCount: (maxCount: number) => void
     setStartCount: (startCount: number) => void
     setToLocalStorage:()=>void
+    getFromLocalStorage:()=>void
 }
 
-export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({setMaxCount, setStartCount,setToLocalStorage}) => {
+export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({setMaxCount, setStartCount,setToLocalStorage,getFromLocalStorage}) => {
 
 
     return (
@@ -20,6 +21,7 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
             />
             <SettingsMenu
                 setToLocalStorage={setToLocalStorage}
+                getFromLocalStorage={getFromLocalStorage}
             />
         </div>
     )

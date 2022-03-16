@@ -5,13 +5,15 @@ type SuperButtonPropsType = {
     incCounterHandler?: () => void
     resetCounterHandler?: () => void
     setToLocalStorage?: () => void
+    getFromLocalStorage?:()=>void
 }
 
 export const SuperButton: FC<SuperButtonPropsType> = ({
                                                           value,
                                                           incCounterHandler,
                                                           resetCounterHandler,
-                                                          setToLocalStorage
+                                                          setToLocalStorage,
+                                                          getFromLocalStorage
                                                       }) => {
     const fix = () => {
     }
@@ -21,6 +23,7 @@ export const SuperButton: FC<SuperButtonPropsType> = ({
             incCounterHandler ? incCounterHandler() : fix();
             resetCounterHandler ? resetCounterHandler() : fix();
             setToLocalStorage ? setToLocalStorage() : fix();
+            getFromLocalStorage?getFromLocalStorage():fix()
         }}>
             {value}
         </button>
