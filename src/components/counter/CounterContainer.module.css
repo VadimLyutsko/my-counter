@@ -1,0 +1,10 @@
+.CounterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    width: 200px;
+    height: 150px;
+    margin: 15px 25px;
+    background-color: greenyellow;
+}
