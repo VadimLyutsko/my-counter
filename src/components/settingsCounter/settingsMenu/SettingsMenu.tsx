@@ -1,11 +1,15 @@
-import React from "react";
+import React, {FC} from "react";
 import {SuperButton} from "../../superComponents/superButton/SuperButton";
 import styles from "./settingsMenu.module.css"
+type SettingsMenuPropsType={
+    setToLocalStorage:()=>void
+}
 
-export const SettingsMenu = () => {
+
+export const SettingsMenu:FC<SettingsMenuPropsType> = ({setToLocalStorage}) => {
     return (
         <div className={styles.settingsMenu}>
-            <SuperButton value ="Set"/>
+            <SuperButton setToLocalStorage={setToLocalStorage} value ="Set"/>
         </div>
     )
 }

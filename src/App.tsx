@@ -5,12 +5,25 @@ import {SettingsCounterContainer} from "./components/settingsCounter/SettingsCou
 
 function App() {
     const [count, setCount] = useState(0);
+    const [startCount, setStartCount] = useState(0)
+    const [maxCount, setMaxCount] = useState(0)
 
 
+    const setToLocalStorage = () => {
+        let start = JSON.stringify(startCount)
+        let max = JSON.stringify(maxCount)
+        localStorage.setItem("start value", start)
+        localStorage.setItem("max value", max)
+    }
 
     return (
         <div className="App">
-            <SettingsCounterContainer/>
+            <SettingsCounterContainer
+                setStartCount={setStartCount}
+                setMaxCount={setMaxCount}
+                setToLocalStorage={setToLocalStorage}
+            />
+
             <CounterContainer
                 count={count}
                 setCount={setCount}

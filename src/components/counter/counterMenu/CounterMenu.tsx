@@ -3,13 +3,11 @@ import {SuperButton} from "../../superComponents/superButton/SuperButton";
 import styles from "./CounterMenu.module.css"
 
 type CounterMenuPropsType = {
-    count: number
-    setCount: (count: number) => void
     resetCounterHandler: () => void
     incCounterHandler: () => void
 }
 
-export const CounterMenu: FC<CounterMenuPropsType> = ({count, setCount, incCounterHandler, resetCounterHandler}) => {
+export const CounterMenu: FC<CounterMenuPropsType> = ({incCounterHandler, resetCounterHandler}) => {
 
 
     return (

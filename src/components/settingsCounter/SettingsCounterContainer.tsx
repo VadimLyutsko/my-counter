@@ -3,16 +3,24 @@ import {SettingsTabloid} from "./settingsTabloid/SettingsTabloid";
 import {SettingsMenu} from "./settingsMenu/SettingsMenu";
 import styles from "./SettingsContainer.module.css"
 
-// type SettingsCounterContainerPropsType={
-//     count:number
-//     setCount:(value:number)=>void
-// }
+type SettingsCounterContainerPropsType = {
+    setMaxCount: (maxCount: number) => void
+    setStartCount: (startCount: number) => void
+    setToLocalStorage:()=>void
+}
 
-export const SettingsCounterContainer:FC = () => {
+export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({setMaxCount, setStartCount,setToLocalStorage}) => {
+
+
     return (
         <div className={styles.settingsContainer}>
-            <SettingsTabloid/>
-            <SettingsMenu/>
+            <SettingsTabloid
+                setMaxCount={setMaxCount}
+                setStartCount={setStartCount}
+            />
+            <SettingsMenu
+                setToLocalStorage={setToLocalStorage}
+            />
         </div>
     )
 }

@@ -3,12 +3,12 @@ import {CounterMenu} from "./counterMenu/CounterMenu";
 import {CounterTabloid} from "./counterTabloid/CounterTabloid";
 import styles from "./CounterContainer.module.css"
 
-type CounterContainerPropsType={
-    count:number
-    setCount:(count:number)=>void
+type CounterContainerPropsType = {
+    count: number
+    setCount: (count: number) => void
 }
 
-export const CounterContainer:FC<CounterContainerPropsType> = ({count,setCount}) => {
+export const CounterContainer: FC<CounterContainerPropsType> = ({count, setCount}) => {
     const incCounterHandler = () => {
         setCount(count + 1)
     }
@@ -21,13 +21,12 @@ export const CounterContainer:FC<CounterContainerPropsType> = ({count,setCount})
         <div className={styles.CounterContainer}>
 
             <CounterTabloid
-            count={count}
+                count={count}
             />
             <CounterMenu
                 incCounterHandler={incCounterHandler}
                 resetCounterHandler={resetCounterHandler}
-            setCount={setCount}
-            count={count}/>
+            />
         </div>
     )
 }
