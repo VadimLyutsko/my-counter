@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {CounterContainer} from "./components/counter/CounterContainer";
 import {SettingsCounterContainer} from "./components/settingsCounter/SettingsCounterContainer";
-import {start} from "repl";
 
 function App() {
     const [count, setCount] = useState<number>(0);
     const [startCount, setStartCount] = useState<number>(0)
     const [maxCount, setMaxCount] = useState<number>(0)
-    //const [message, setMessage] = useState<string>('Enter values and press "Set"')
 
     useEffect(() => {
         let startCountAsString = localStorage.getItem("start value")
@@ -38,8 +36,6 @@ function App() {
     }
 
 
-
-
     return (
         <div className="App">
             <SettingsCounterContainer
@@ -53,6 +49,8 @@ function App() {
             <CounterContainer
                 count={count}
                 setCount={setCount}
+                startCount={startCount}
+                maxCount={maxCount}
             />
         </div>
     );

@@ -19,7 +19,6 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
                                                                                     startCount
                                                                                 }) => {
 
-
     return (
         <div className={styles.settingsContainer}>
             <SettingsTabloid
@@ -30,6 +29,8 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
             />
             <SettingsMenu
                 setToLocalStorage={setToLocalStorage}
+                startCount={startCount}
+                maxCount={maxCount}
             />
         </div>
     )

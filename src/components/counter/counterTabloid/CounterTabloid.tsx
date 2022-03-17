@@ -1,14 +1,24 @@
 import React, {FC} from "react";
 import styles from "./CounterTabloid.module.css"
 
-type CounterTabloidPropsType ={
-    count:number
+type CounterTabloidPropsType = {
+    count: number
+    startCount: number
+    maxCount: number
 }
 
-export const CounterTabloid:FC<CounterTabloidPropsType> = ({count}) => {
+
+export const CounterTabloid: FC<CounterTabloidPropsType> = ({
+                                                                count,
+                                                                startCount,
+                                                                maxCount
+                                                            }) => {
+
+
     return (
         <div className={styles.counterTabloid}>
-            {count}
+            {(startCount >= maxCount) ? "Incorrect value!" : count}
+
         </div>
     )
 }

@@ -6,27 +6,40 @@ import styles from "./CounterContainer.module.css"
 type CounterContainerPropsType = {
     count: number
     setCount: (count: number) => void
+    startCount: number
+    maxCount: number
 }
 
-export const CounterContainer: FC<CounterContainerPropsType> = ({count, setCount}) => {
+export const CounterContainer: FC<CounterContainerPropsType> = ({
+                                                                    count,
+                                                                    setCount,
+                                                                    startCount,
+                                                                    maxCount
+                                                                }) => {
+
+
     const incCounterHandler = () => {
         setCount(count + 1)
     }
 
     const resetCounterHandler = () => {
-        setCount(0)
+        setCount(startCount)
     }
+
 
     return (
         <div className={styles.CounterContainer}>
-
             <CounterTabloid
                 count={count}
+                startCount={startCount}
+                maxCount={maxCount}
             />
             <CounterMenu
                 incCounterHandler={incCounterHandler}
                 resetCounterHandler={resetCounterHandler}
                 count={count}
+                startCount={startCount}
+                maxCount={maxCount}
             />
         </div>
     )
