@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import styles from "./superButton.module.css"
 
 type SuperButtonPropsType = {
@@ -6,27 +6,32 @@ type SuperButtonPropsType = {
     incCounterHandler?: () => void
     resetCounterHandler?: () => void
     setToLocalStorage?: () => void
-    getFromLocalStorage?:()=>void
+    getFromLocalStorage?: () => void
+    count?: number
 }
 
 export const SuperButton: FC<SuperButtonPropsType> = ({
                                                           value,
+                                                          count,
                                                           incCounterHandler,
                                                           resetCounterHandler,
                                                           setToLocalStorage,
                                                           getFromLocalStorage
                                                       }) => {
+
+
     const fix = () => {
     }
 
     return (
-        <button className={value==="Set"? styles.superButtonSet:styles.superButtonIncRes}
-            onClick={() => {
-            incCounterHandler ? incCounterHandler() : fix();
-            resetCounterHandler ? resetCounterHandler() : fix();
-            setToLocalStorage ? setToLocalStorage() : fix();
-            getFromLocalStorage?getFromLocalStorage():fix()
-        }}>
+        <button className={value === "Set" ? styles.superButtonSet : styles.superButtonIncRes}
+                disabled={!count && value === 'Reset'}
+                onClick={() => {
+                    incCounterHandler ? incCounterHandler() : fix();
+                    resetCounterHandler ? resetCounterHandler() : fix();
+                    setToLocalStorage ? setToLocalStorage() : fix();
+                    getFromLocalStorage ? getFromLocalStorage() : fix()
+                }}>
             {value}
         </button>
     )

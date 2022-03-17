@@ -8,7 +8,7 @@ function App() {
     const [count, setCount] = useState<number>(0);
     const [startCount, setStartCount] = useState<number>(0)
     const [maxCount, setMaxCount] = useState<number>(0)
-    const [message, setMessage] = useState<string>('Enter values and press "Set"')
+    //const [message, setMessage] = useState<string>('Enter values and press "Set"')
 
     useEffect(() => {
         let startCountAsString = localStorage.getItem("start value")
@@ -17,6 +17,7 @@ function App() {
         if (startCountAsString) {
             let startCountValue = JSON.parse(startCountAsString)
             setStartCount(startCountValue)
+            setCount(startCountValue)
         }
 
         if (maxCountAsString) {
@@ -29,6 +30,7 @@ function App() {
     const setToLocalStorage = () => {
         if (startCount !== 0 && maxCount !== 0) {
             localStorage.setItem("start value", JSON.stringify(startCount))
+            setCount(startCount)
         }
         if (startCount !== 0 && maxCount !== 0) {
             localStorage.setItem("max value", JSON.stringify(maxCount))

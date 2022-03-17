@@ -26,6 +26,7 @@ export const CounterContainer: FC<CounterContainerPropsType> = ({count, setCount
             <CounterMenu
                 incCounterHandler={incCounterHandler}
                 resetCounterHandler={resetCounterHandler}
+                count={count}
             />
         </div>
     )
