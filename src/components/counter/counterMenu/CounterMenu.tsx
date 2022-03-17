@@ -5,10 +5,10 @@ import styles from "./CounterMenu.module.css"
 type CounterMenuPropsType = {
     resetCounterHandler: () => void
     incCounterHandler: () => void
-    count: number
+    count:number
 }
 
-export const CounterMenu: FC<CounterMenuPropsType> = ({incCounterHandler, resetCounterHandler, count}) => {
+export const CounterMenu: FC<CounterMenuPropsType> = ({incCounterHandler, resetCounterHandler,count}) => {
 
 
     return (

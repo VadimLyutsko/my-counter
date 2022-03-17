@@ -20,17 +20,16 @@ export const SuperButton: FC<SuperButtonPropsType> = ({
                                                       }) => {
 
 
-    const fix = () => {
-    }
+
 
     return (
         <button className={value === "Set" ? styles.superButtonSet : styles.superButtonIncRes}
                 disabled={!count && value === 'Reset'}
                 onClick={() => {
-                    incCounterHandler ? incCounterHandler() : fix();
-                    resetCounterHandler ? resetCounterHandler() : fix();
-                    setToLocalStorage ? setToLocalStorage() : fix();
-                    getFromLocalStorage ? getFromLocalStorage() : fix()
+                    incCounterHandler && incCounterHandler() ;
+                    resetCounterHandler && resetCounterHandler() ;
+                    setToLocalStorage && setToLocalStorage() ;
+                    getFromLocalStorage && getFromLocalStorage()
                 }}>
             {value}
         </button>

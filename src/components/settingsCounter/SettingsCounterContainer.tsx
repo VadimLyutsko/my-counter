@@ -30,8 +30,6 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
             />
             <SettingsMenu
                 setToLocalStorage={setToLocalStorage}
-
-
             />
         </div>
     )
