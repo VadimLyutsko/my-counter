@@ -21,18 +21,24 @@ export const SettingsTabloid: FC<SettingsTabloidPropsType> = ({setMaxCount, setS
 
     return (
         <div className={styles.counterTabloid}>
-            Settings*
-            <div><input
-                value={maxCount}
-                onChange={maxCountInputHandler}
-                type="number"
-                placeholder="Max"/></div>
 
-            <div><input
+
+                <span style={{fontWeight: "bold"}}>
+
+
+                <input
+                    className={styles.inp}
+                    value={maxCount}
+                    onChange={maxCountInputHandler}
+                    type="number"
+                    placeholder="Max"/>max value</span>
+
+            <span style={{fontWeight: "bold"}}><input
+                className={styles.inp}
                 value={startCount}
                 onChange={startCountInputHandler}
                 type="number"
-                placeholder="Start"/></div>
+                placeholder="Start"/>start value</span>
 
 
         </div>

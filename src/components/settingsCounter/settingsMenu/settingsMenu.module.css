@@ -4,5 +4,8 @@
     align-items: center;
     width: 100%;
     height: 30%;
-    background-color: #3779f8
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: #8460bb;
+    border: solid 2px #322344;
 }

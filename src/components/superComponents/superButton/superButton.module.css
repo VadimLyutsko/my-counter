@@ -1,0 +1,12 @@
+.superButtonSet{
+    border-radius: 7px;
+    background-color: #2e074b;
+    color: wheat;
+    width: 50px;
+}
+
+.superButtonIncRes{
+    border-radius: 7px;
+    background-color: #6cc73d;
+    width: 50px;
+}

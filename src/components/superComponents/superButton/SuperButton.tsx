@@ -1,4 +1,5 @@
 import React, {FC} from "react";
+import styles from "./superButton.module.css"
 
 type SuperButtonPropsType = {
     value: string
@@ -19,7 +20,8 @@ export const SuperButton: FC<SuperButtonPropsType> = ({
     }
 
     return (
-        <button onClick={() => {
+        <button className={value==="Set"? styles.superButtonSet:styles.superButtonIncRes}
+            onClick={() => {
             incCounterHandler ? incCounterHandler() : fix();
             resetCounterHandler ? resetCounterHandler() : fix();
             setToLocalStorage ? setToLocalStorage() : fix();

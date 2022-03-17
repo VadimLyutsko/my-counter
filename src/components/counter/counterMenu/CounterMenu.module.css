@@ -1,8 +1,11 @@
-.counterMenu{
+.counterMenu {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 30%;
-    background-color: #2cde7c
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: #2cde7c;
+    border: solid 2px #086408;
 }
