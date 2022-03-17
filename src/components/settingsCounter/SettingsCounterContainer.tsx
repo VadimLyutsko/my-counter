@@ -6,11 +6,20 @@ import styles from "./SettingsContainer.module.css"
 type SettingsCounterContainerPropsType = {
     setMaxCount: (maxCount: number) => void
     setStartCount: (startCount: number) => void
-    setToLocalStorage:()=>void
-    getFromLocalStorage:()=>void
+    setToLocalStorage: () => void
+    getFromLocalStorage: () => void
+    maxCount: number
+    startCount: number
 }
 
-export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({setMaxCount, setStartCount,setToLocalStorage,getFromLocalStorage}) => {
+export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({
+                                                                                    setMaxCount,
+                                                                                    setStartCount,
+                                                                                    setToLocalStorage,
+                                                                                    getFromLocalStorage,
+                                                                                    maxCount,
+                                                                                    startCount
+                                                                                }) => {
 
 
     return (
@@ -18,10 +27,13 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
             <SettingsTabloid
                 setMaxCount={setMaxCount}
                 setStartCount={setStartCount}
+                startCount={startCount}
+                maxCount={maxCount}
             />
             <SettingsMenu
                 setToLocalStorage={setToLocalStorage}
                 getFromLocalStorage={getFromLocalStorage}
+
             />
         </div>
     )

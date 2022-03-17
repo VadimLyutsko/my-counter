@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {CounterContainer} from "./components/counter/CounterContainer";
 import {SettingsCounterContainer} from "./components/settingsCounter/SettingsCounterContainer";
+import {start} from "repl";
 
 function App() {
     const [count, setCount] = useState<number>(0);
@@ -10,58 +11,71 @@ function App() {
 
 
     // useEffect(() => {
-    //     setStartValueToLocalStorage()
-    // }, [startCount])
-    //
-    // useEffect(() => {
-    //     setMaxValueToLocalStorage()
-    // }, [maxCount])
-
-    // useEffect(() => {
-    //     let startCountAsString = localStorage.getItem("start value")
-    //     let maxCountAsString = localStorage.getItem("max value")
-    //
-    //     if (maxCountAsString) {
-    //         let maxCountValue = JSON.parse(maxCountAsString)
-    //         setMaxCount(maxCountValue)
-    //     }
-    //
-    //     if (startCountAsString) {
-    //         let startCountValue = JSON.parse(startCountAsString)
-    //         setStartCount(startCountValue)
-    //     }
-    // }, [])
+    //   //  setStartValueToLocalStorage()
+    //   //  setMaxValueToLocalStorage()
+    // }, [startCount, maxCount])
 
 
-    const setStartValueToLocalStorage = () => {
-        localStorage.setItem("start value", JSON.stringify(startCount))
-    }
-    const setMaxValueToLocalStorage = () => {
-        localStorage.setItem("max value", JSON.stringify(maxCount))
-    }
-    const setToLocalStorage = () => {
-        setStartValueToLocalStorage()
-        setMaxValueToLocalStorage()
-        // localStorage.setItem("start value", JSON.stringify(startCount))
-        // localStorage.setItem("max value", JSON.stringify(maxCount))
-    }
 
-
-    const getFromLocalStorage = () => {
+    useEffect(() => {
         let startCountAsString = localStorage.getItem("start value")
         let maxCountAsString = localStorage.getItem("max value")
 
         if (maxCountAsString) {
             let maxCountValue = JSON.parse(maxCountAsString)
             setMaxCount(maxCountValue)
-            console.log(maxCountValue)
         }
 
         if (startCountAsString) {
             let startCountValue = JSON.parse(startCountAsString)
             setStartCount(startCountValue)
-            console.log(startCountValue)
         }
+    }, [])
+
+
+    // const setStartValueToLocalStorage = () => {
+    //     if (startCount !==0 && maxCount !== 0 ){
+    //         localStorage.setItem("start value", JSON.stringify(startCount))
+    //     }
+    // }
+    // const setMaxValueToLocalStorage = () => {
+    //     if (startCount !==0 && maxCount !== 0 ){
+    //         localStorage.setItem("max value", JSON.stringify(maxCount))
+    //     }
+    // }
+
+    const setToLocalStorage = () => {
+        if (startCount !==0 && maxCount !== 0 ){
+            localStorage.setItem("start value", JSON.stringify(startCount))
+        }
+        if (startCount !==0 && maxCount !== 0 ){
+            localStorage.setItem("max value", JSON.stringify(maxCount))
+        }
+
+
+        // setStartValueToLocalStorage()
+        // setMaxValueToLocalStorage()
+        // localStorage.setItem("start value", JSON.stringify(startCount))
+        // localStorage.setItem("max value", JSON.stringify(maxCount))
+    }
+
+
+    const getFromLocalStorage = () => {
+
+        // let startCountAsString = localStorage.getItem("start value")
+        // let maxCountAsString = localStorage.getItem("max value")
+        //
+        // if (maxCountAsString) {
+        //     let maxCountValue = JSON.parse(maxCountAsString)
+        //     setMaxCount(maxCountValue)
+        //
+        // }
+        //
+        // if (startCountAsString) {
+        //     let startCountValue = JSON.parse(startCountAsString)
+        //     setStartCount(startCountValue)
+        //
+        // }
     }
 
 
@@ -72,6 +86,8 @@ function App() {
                 setMaxCount={setMaxCount}
                 setToLocalStorage={setToLocalStorage}
                 getFromLocalStorage={getFromLocalStorage}
+                startCount={startCount}
+                maxCount={maxCount}
             />
 
             <CounterContainer
