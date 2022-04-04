@@ -4,56 +4,65 @@ import {CounterContainer} from "./components/counter/CounterContainer";
 import {SettingsCounterContainer} from "./components/settingsCounter/SettingsCounterContainer";
 
 function App() {
-    const [count, setCount] = useState<number>(0);
-    const [startCount, setStartCount] = useState<number>(0)
-    const [maxCount, setMaxCount] = useState<number>(0)
 
-    useEffect(() => {
-        let startCountAsString = localStorage.getItem("start value")
-        let maxCountAsString = localStorage.getItem("max value")
+    const [count, setCount] = useState<number>(0)
+    const [startValue, setStartValue] = useState<number>(0)
+    const [maxValue, setMaxValue] = useState<number>(0)
 
-        if (startCountAsString) {
-            let startCountValue = JSON.parse(startCountAsString)
-            setStartCount(startCountValue)
-            setCount(startCountValue)
-        }
-
-        if (maxCountAsString) {
-            let maxCountValue = JSON.parse(maxCountAsString)
-            setMaxCount(maxCountValue)
-        }
-
-    }, [])
-
-    const setToLocalStorage = () => {
-        if (startCount !== 0 && maxCount !== 0) {
-            localStorage.setItem("start value", JSON.stringify(startCount))
-            setCount(startCount)
-        }
-        if (startCount !== 0 && maxCount !== 0) {
-            localStorage.setItem("max value", JSON.stringify(maxCount))
-        }
+    const setStateToStartValue = (value:string) => {
+        let startValueToString = JSON.parse(value)
+        setStartValue(startValueToString)
     }
+    const setStateToMaxValue = (value:string) => {
+        let maxValueToString = JSON.parse(value)
+        setMaxValue(maxValueToString)
+    }
+
+
+
+
+
+    const setToLocalStorageStartValue = (value:number | undefined) => {
+        let startValueToString = JSON.stringify(value)
+        localStorage.setItem('start value', startValueToString)
+    }
+    const setToLocalStorageMaxValue = (value:number | undefined) => {
+        let maxValueToString = JSON.stringify(value)
+        localStorage.setItem('max value', maxValueToString)
+    }
+
+
+
+
+    const incCount = () => {
+        setCount(count + 1)
+    }
+    const resetCount = () => {
+        setCount(0)
+    }
+
 
 
     return (
         <div className="App">
             <SettingsCounterContainer
-                setStartCount={setStartCount}
-                setMaxCount={setMaxCount}
-                setToLocalStorage={setToLocalStorage}
-                startCount={startCount}
-                maxCount={maxCount}
+                setStateToStartValue={setStateToStartValue}
+                setStateToMaxValue={setStateToMaxValue}
+                setToLocalStorageStartValue={setToLocalStorageStartValue} startValue={startValue}
+                setToLocalStorageMaxValue={setToLocalStorageMaxValue} maxValue={maxValue}
             />
 
             <CounterContainer
                 count={count}
-                setCount={setCount}
-                startCount={startCount}
-                maxCount={maxCount}
+                incCount={incCount}
+                resetCount={resetCount}
             />
         </div>
     );
 }
 
 export default App;
+
+
+
+

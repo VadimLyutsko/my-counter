@@ -3,25 +3,17 @@ import {SuperButton} from "../../superComponents/superButton/SuperButton";
 import styles from "./CounterMenu.module.css"
 
 type CounterMenuPropsType = {
-    resetCounterHandler: () => void
-    incCounterHandler: () => void
-    count: number
-    startCount: number
-    maxCount: number
+    incCount?: () => void
+    resetCount?: () => void
 }
 
-export const CounterMenu: FC<CounterMenuPropsType> = ({
-                                                          incCounterHandler,
-                                                          resetCounterHandler,
-                                                          startCount,
-                                                          count
-                                                      }) => {
+export const CounterMenu: FC<CounterMenuPropsType> = ({incCount, resetCount}) => {
 
 
     return (
         <div className={styles.counterMenu}>
-            <SuperButton value="Inc" incCounterHandler={incCounterHandler} count={count}/>
-            <SuperButton value="Reset" resetCounterHandler={resetCounterHandler} startCount={startCount} count={count}/>
+            <SuperButton value='inc' incCount={incCount}/>
+            <SuperButton value='reset' resetCount={resetCount}/>
         </div>
     )
 }

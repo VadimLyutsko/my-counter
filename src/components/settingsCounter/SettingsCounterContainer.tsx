@@ -4,33 +4,30 @@ import {SettingsMenu} from "./settingsMenu/SettingsMenu";
 import styles from "./SettingsContainer.module.css"
 
 type SettingsCounterContainerPropsType = {
-    setMaxCount: (maxCount: number) => void
-    setStartCount: (startCount: number) => void
-    setToLocalStorage: () => void
-    maxCount: number
-    startCount: number
+    setStateToStartValue: (value:string) => void
+    setStateToMaxValue:(value:string) => void
+    setToLocalStorageStartValue:(value:number | undefined)=>void
+    setToLocalStorageMaxValue:(value:number | undefined)=>void
+    startValue:number
+    maxValue:number
 }
 
 export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({
-                                                                                    setMaxCount,
-                                                                                    setStartCount,
-                                                                                    setToLocalStorage,
-                                                                                    maxCount,
-                                                                                    startCount
+                                                                                    setStateToStartValue,setStateToMaxValue,
+                                                                                    setToLocalStorageStartValue,setToLocalStorageMaxValue,
+                                                                                    startValue,maxValue
                                                                                 }) => {
 
     return (
         <div className={styles.settingsContainer}>
             <SettingsTabloid
-                setMaxCount={setMaxCount}
-                setStartCount={setStartCount}
-                startCount={startCount}
-                maxCount={maxCount}
+                setStateToStartValue={setStateToStartValue}
+                setStateToMaxValue={setStateToMaxValue}
+
             />
             <SettingsMenu
-                setToLocalStorage={setToLocalStorage}
-                startCount={startCount}
-                maxCount={maxCount}
+                setToLocalStorageStartValue={setToLocalStorageStartValue} startValue={startValue}
+                setToLocalStorageMaxValue={setToLocalStorageMaxValue} maxValue={maxValue}
             />
         </div>
     )

@@ -2,61 +2,32 @@ import React, {FC} from "react";
 import styles from "./superButton.module.css"
 
 type SuperButtonPropsType = {
-    value: string
-    incCounterHandler?: () => void
-    resetCounterHandler?: () => void
-    setToLocalStorage?: () => void
-    getFromLocalStorage?: () => void
-    count?: number
-    startCount?: number
-    maxCount?: number
+    incCount?: () => void
+    resetCount?: () => void
+    value: 'set' | 'inc' | 'reset'
+
+    setToLocalStorageStartValue?:(value:number | undefined)=>void
+    setToLocalStorageMaxValue?:(value:number | undefined)=>void
+    startValue?:number
+    maxValue?:number
 }
 
-
 export const SuperButton: FC<SuperButtonPropsType> = ({
-                                                          value,
-                                                          count,
-                                                          incCounterHandler,
-                                                          resetCounterHandler,
-                                                          setToLocalStorage,
-                                                          getFromLocalStorage,
-                                                          startCount,
-                                                          maxCount
+                                                          incCount, resetCount, value,setToLocalStorageStartValue,setToLocalStorageMaxValue,startValue,maxValue
+
                                                       }) => {
 
 
-    const disButtStart = () => {
-        let startCountAsString = localStorage.getItem("start value")
-        if (startCountAsString) {
-            return JSON.parse(startCountAsString)
-        }
-    }
-
-    const disButtMax = () => {
-        let maxCountAsString = localStorage.getItem("max value")
-        if (maxCountAsString) {
-            return JSON.parse(maxCountAsString)
-        }
-    }
-
-
     return (
-        <button className={value === "Set" ? styles.superButtonSet : styles.superButtonIncRes}
-
-                disabled={
-                    ((count === startCount) && value === 'Reset') ||
-                    ((count === maxCount) && value === 'Inc') ||
-                    ((startCount === disButtStart()) && value === 'Set') &&
-                    ((maxCount === disButtMax()) && value === 'Set')
-                }
-
-
-                onClick={() => {
-                    incCounterHandler && incCounterHandler();
-                    resetCounterHandler && resetCounterHandler();
-                    setToLocalStorage && setToLocalStorage();
-                    getFromLocalStorage && getFromLocalStorage()
-                }}>
+        <button
+            className={value === 'set' ? styles.superButtonSet : styles.superButtonIncRes}
+            onClick={() => {
+                incCount && incCount()
+                resetCount && resetCount()
+                setToLocalStorageStartValue && setToLocalStorageStartValue(startValue)
+                setToLocalStorageMaxValue&&setToLocalStorageMaxValue(maxValue)
+            }}
+        >
             {value}
         </button>
     )
