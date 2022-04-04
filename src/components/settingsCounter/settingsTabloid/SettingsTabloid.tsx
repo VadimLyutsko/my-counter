@@ -19,8 +19,8 @@ export const SettingsTabloid: FC<SettingsTabloidPropsType> = ({setStateToStartVa
 
     return (
         <div className={styles.counterTabloid}>
-            <span><input className={styles.inp} type="number" onChange={onChangeMaxValueHandler}/>max value</span>
-            <span><input className={styles.inp} type="number" onChange={onChangeStartValueHandler}/>start value</span>
+            <span><input className={styles.inp} type="number" onChange={onChangeMaxValueHandler} placeholder='max'/>max value</span>
+            <span><input className={styles.inp} type="number" onChange={onChangeStartValueHandler} placeholder='start'/>start value</span>
 
         </div>
     )

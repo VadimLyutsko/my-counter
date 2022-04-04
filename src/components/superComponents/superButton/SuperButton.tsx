@@ -5,15 +5,21 @@ type SuperButtonPropsType = {
     incCount?: () => void
     resetCount?: () => void
     value: 'set' | 'inc' | 'reset'
-
-    setToLocalStorageStartValue?:(value:number | undefined)=>void
-    setToLocalStorageMaxValue?:(value:number | undefined)=>void
-    startValue?:number
-    maxValue?:number
+    saveNewStartCount?:()=>void
+    setToLocalStorageStartValue?: (value: number | undefined) => void
+    setToLocalStorageMaxValue?: (value: number | undefined) => void
+    startValue?: number
+    maxValue?: number
 }
 
-export const SuperButton: FC<SuperButtonPropsType> = ({
-                                                          incCount, resetCount, value,setToLocalStorageStartValue,setToLocalStorageMaxValue,startValue,maxValue
+export const SuperButton: FC<SuperButtonPropsType> = ({saveNewStartCount,
+                                                          incCount,
+                                                          resetCount,
+                                                          value,
+                                                          setToLocalStorageStartValue,
+                                                          setToLocalStorageMaxValue,
+                                                          startValue,
+                                                          maxValue
 
                                                       }) => {
 
@@ -22,10 +28,11 @@ export const SuperButton: FC<SuperButtonPropsType> = ({
         <button
             className={value === 'set' ? styles.superButtonSet : styles.superButtonIncRes}
             onClick={() => {
+                saveNewStartCount&&saveNewStartCount()
                 incCount && incCount()
                 resetCount && resetCount()
                 setToLocalStorageStartValue && setToLocalStorageStartValue(startValue)
-                setToLocalStorageMaxValue&&setToLocalStorageMaxValue(maxValue)
+                setToLocalStorageMaxValue && setToLocalStorageMaxValue(maxValue)
             }}
         >
             {value}

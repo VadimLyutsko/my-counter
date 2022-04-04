@@ -9,38 +9,37 @@ function App() {
     const [startValue, setStartValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(0)
 
-    const setStateToStartValue = (value:string) => {
+    const setStateToStartValue = (value: string) => {
         let startValueToString = JSON.parse(value)
         setStartValue(startValueToString)
     }
-    const setStateToMaxValue = (value:string) => {
+    const setStateToMaxValue = (value: string) => {
         let maxValueToString = JSON.parse(value)
         setMaxValue(maxValueToString)
     }
 
 
-
-
-
-    const setToLocalStorageStartValue = (value:number | undefined) => {
+    const setToLocalStorageStartValue = (value: number | undefined) => {
         let startValueToString = JSON.stringify(value)
         localStorage.setItem('start value', startValueToString)
     }
-    const setToLocalStorageMaxValue = (value:number | undefined) => {
+    const setToLocalStorageMaxValue = (value: number | undefined) => {
         let maxValueToString = JSON.stringify(value)
         localStorage.setItem('max value', maxValueToString)
     }
 
 
+    const saveNewStartCount = () => {
+        setCount(startValue)
+    }
 
 
     const incCount = () => {
         setCount(count + 1)
     }
     const resetCount = () => {
-        setCount(0)
+        setCount(startValue)
     }
-
 
 
     return (
@@ -50,6 +49,8 @@ function App() {
                 setStateToMaxValue={setStateToMaxValue}
                 setToLocalStorageStartValue={setToLocalStorageStartValue} startValue={startValue}
                 setToLocalStorageMaxValue={setToLocalStorageMaxValue} maxValue={maxValue}
+                saveNewStartCount={saveNewStartCount}
+
             />
 
             <CounterContainer

@@ -4,18 +4,23 @@ import {SettingsMenu} from "./settingsMenu/SettingsMenu";
 import styles from "./SettingsContainer.module.css"
 
 type SettingsCounterContainerPropsType = {
-    setStateToStartValue: (value:string) => void
-    setStateToMaxValue:(value:string) => void
-    setToLocalStorageStartValue:(value:number | undefined)=>void
-    setToLocalStorageMaxValue:(value:number | undefined)=>void
-    startValue:number
-    maxValue:number
+    saveNewStartCount: () => void
+    setStateToStartValue: (value: string) => void
+    setStateToMaxValue: (value: string) => void
+    setToLocalStorageStartValue: (value: number | undefined) => void
+    setToLocalStorageMaxValue: (value: number | undefined) => void
+    startValue: number
+    maxValue: number
 }
 
 export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = ({
-                                                                                    setStateToStartValue,setStateToMaxValue,
-                                                                                    setToLocalStorageStartValue,setToLocalStorageMaxValue,
-                                                                                    startValue,maxValue
+                                                                                    saveNewStartCount,
+                                                                                    setStateToStartValue,
+                                                                                    setStateToMaxValue,
+                                                                                    setToLocalStorageStartValue,
+                                                                                    setToLocalStorageMaxValue,
+                                                                                    startValue,
+                                                                                    maxValue
                                                                                 }) => {
 
     return (
@@ -28,6 +33,7 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
             <SettingsMenu
                 setToLocalStorageStartValue={setToLocalStorageStartValue} startValue={startValue}
                 setToLocalStorageMaxValue={setToLocalStorageMaxValue} maxValue={maxValue}
+                saveNewStartCount={saveNewStartCount}
             />
         </div>
     )
