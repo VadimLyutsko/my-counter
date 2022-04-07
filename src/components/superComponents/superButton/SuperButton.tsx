@@ -5,14 +5,15 @@ type SuperButtonPropsType = {
     incCount?: () => void
     resetCount?: () => void
     value: 'set' | 'inc' | 'reset'
-    saveNewStartCount?:()=>void
+    saveNewStartCount?: () => void
     setToLocalStorageStartValue?: (value: number | undefined) => void
     setToLocalStorageMaxValue?: (value: number | undefined) => void
     startValue?: number
     maxValue?: number
 }
 
-export const SuperButton: FC<SuperButtonPropsType> = ({saveNewStartCount,
+export const SuperButton: FC<SuperButtonPropsType> = ({
+                                                          saveNewStartCount,
                                                           incCount,
                                                           resetCount,
                                                           value,
@@ -23,16 +24,20 @@ export const SuperButton: FC<SuperButtonPropsType> = ({saveNewStartCount,
 
                                                       }) => {
 
+    const onClickHandler = () => {
+        saveNewStartCount && saveNewStartCount()
+        incCount && incCount()
+        resetCount && resetCount()
+        setToLocalStorageStartValue && setToLocalStorageStartValue(startValue)
+        setToLocalStorageMaxValue && setToLocalStorageMaxValue(maxValue)
+    }
+
 
     return (
         <button
             className={value === 'set' ? styles.superButtonSet : styles.superButtonIncRes}
             onClick={() => {
-                saveNewStartCount&&saveNewStartCount()
-                incCount && incCount()
-                resetCount && resetCount()
-                setToLocalStorageStartValue && setToLocalStorageStartValue(startValue)
-                setToLocalStorageMaxValue && setToLocalStorageMaxValue(maxValue)
+                onClickHandler()
             }}
         >
             {value}

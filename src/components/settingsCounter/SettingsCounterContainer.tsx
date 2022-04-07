@@ -28,7 +28,8 @@ export const SettingsCounterContainer: FC<SettingsCounterContainerPropsType> = (
             <SettingsTabloid
                 setStateToStartValue={setStateToStartValue}
                 setStateToMaxValue={setStateToMaxValue}
-
+                startValue={startValue}
+                maxValue={maxValue}
             />
             <SettingsMenu
                 setToLocalStorageStartValue={setToLocalStorageStartValue} startValue={startValue}

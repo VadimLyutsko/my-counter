@@ -4,10 +4,11 @@ import styles from "./settingsTabloid.module.css"
 type SettingsTabloidPropsType = {
     setStateToStartValue: (value: string) => void
     setStateToMaxValue: (value: string) => void
-
+    startValue:number
+    maxValue:number
 }
 
-export const SettingsTabloid: FC<SettingsTabloidPropsType> = ({setStateToStartValue, setStateToMaxValue}) => {
+export const SettingsTabloid: FC<SettingsTabloidPropsType> = ({setStateToStartValue, setStateToMaxValue,startValue,maxValue}) => {
 
     const onChangeStartValueHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setStateToStartValue(event.currentTarget.value)
@@ -19,8 +20,8 @@ export const SettingsTabloid: FC<SettingsTabloidPropsType> = ({setStateToStartVa
 
     return (
         <div className={styles.counterTabloid}>
-            <span><input className={styles.inp} type="number" onChange={onChangeMaxValueHandler} placeholder='max'/>max value</span>
-            <span><input className={styles.inp} type="number" onChange={onChangeStartValueHandler} placeholder='start'/>start value</span>
+            <span><input value={maxValue}  className={styles.inp} type="number" onChange={onChangeMaxValueHandler} placeholder='max'/>max value</span>
+            <span><input value={startValue} className={styles.inp} type="number" onChange={onChangeStartValueHandler} placeholder='start'/>start value</span>
 
         </div>
     )
